@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Pizza Shop</title>
+</head>
+<body>
+  <header>
+    <h1>Pizza Shop</h1>
+  </header>
+
+  <section id="menu">
+    <h2>Menu</h2>
+    <div class="pizza-item" id="margherita">
+      <h3>Margherita Pizza</h3>
+      <p>Classic tomato sauce, mozzarella, basil</p>
+      <button onclick="addToCart('Margherita', 10.99)">Add to Cart</button>
+    </div>
+
+    <div class="pizza-item" id="pepperoni">
+      <h3>Pepperoni Pizza</h3>
+      <p>Tomato sauce, mozzarella, pepperoni</p>
+      <button onclick="addToCart('Pepperoni', 12.99)">Add to Cart</button>
+    </div>
+
+    <!-- Add more pizza items as needed -->
+
+  </section>
+
+  <section id="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items">
+      <!-- Cart items will be displayed here dynamically using JavaScript -->
+    </ul>
+    <p>Total: $<span id="total">0.00</span></p>
+    <button onclick="checkout()">Checkout</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Pizza Shop</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f8d300;
+  padding: 1em;
+  text-align: center;
+}
+
+section {
+  margin: 20px;
+}
+
+#menu, #cart {
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.pizza-item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+let cartItems = [];
+
+function addToCart(itemName, price) {
+  cartItems.push({ name: itemName, price: price });
+  updateCart();
+}
+
+function updateCart() {
+  const cartList = document.getElementById('cart-items');
+  const totalElement = document.getElementById('total');
+  let total = 0;
+
+  // Clear the current cart items
+  cartList.innerHTML = '';
+
+  // Populate the cart with the updated items
+  cartItems.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+    cartList.appendChild(li);
+    total += item.price;
+  });
+
+  // Update the total price
+  totalElement.textContent = total.toFixed(2);
+}
+
+function checkout() {
+  alert('Thank you for your order! Your total is $' + parseFloat(document.getElementById('total').textContent));
+  // You can add additional logic for order processing, payment, etc.
+  cartItems = []; // Clear the cart after checkout
+  updateCart();
+}
+
+
+
+
+
+
+
+
+
+let cartItems = [];
+
+function addToCart(itemName, price) {
+  cartItems.push({ name: itemName, price: price });
+  updateCart();
+}
+                    
+function updateCart() {
+  const cartList = document.getElementById('cart-items');
+  const totalElement = document.getElementById('total');
+  let total = 0;
+
+  // Clear the current cart items
+  cartList.innerHTML = '';
+
+  // Populate the cart with the updated items
+  cartItems.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.name} - ${item.price.toFixed(2)}`;
+    cartList.appendChild(li);
+    total += item.price;
+  });
+
+  // Update the total price
+  totalElement.textContent = total.toFixed(2);
+}
+
+function checkout() {
+  alert('Thank you for your order! Your total is $' + parseFloat(document.getElementById('total').textContent));
+  // You can add additional logic for order processing, payment, etc.
+  cartItems = []; // Clear the cart after checkout
+  updateCart();
+}
+
+
+<img src="margherita.jpeg" alt="margherita" width="200" height="200">
+<button onclick="checkout('phone-pay')">Checkout with Phone Pay</button>
